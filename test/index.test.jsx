@@ -1,3 +1,6 @@
+/**
+ * @jest-environment jsdom
+ */
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import TestDriver from '@airtable/blocks-testing';
@@ -8,7 +11,7 @@ import UpdateRecordsApp from '../frontend/UpdateRecordsApp';
 
 describe('UpdateRecordsApp', () => {
     const mutations = [];
-    let addMutation = mutation => mutations.push(mutation);
+    let addMutation = (mutation) => mutations.push(mutation);
     let testDriver;
 
     beforeEach(() => {
@@ -53,7 +56,7 @@ describe('UpdateRecordsApp', () => {
         });
 
         it('correct active table with some selected records and underprivileged user', async () => {
-            testDriver.simulatePermissionCheck(mutation => {
+            testDriver.simulatePermissionCheck((mutation) => {
                 return mutation.type !== 'setMultipleRecordsCellValues';
             });
             testDriver.userSelectRecords(['recb', 'recc']);

@@ -1,12 +1,12 @@
 import {
-    Box,
-    Text,
-    Button,
     useBase,
     useCursor,
     useLoadable,
     useRecords,
     useWatchable,
+    Box,
+    Text,
+    Button,
 } from '@airtable/blocks/ui';
 import React, {useState} from 'react';
 
@@ -101,9 +101,9 @@ function UpdateSelectedRecordsButton({tableToUpdate, fieldToUpdate, selectedReco
     // .filter narrows the list of all records down to just the records with id
     // in selectedRecordIdSet.
     const selectedRecordIdsSet = new Set(selectedRecordIds);
-    const recordsToUpdate = records.filter(record => selectedRecordIdsSet.has(record.id));
+    const recordsToUpdate = records.filter((record) => selectedRecordIdsSet.has(record.id));
 
-    const updates = recordsToUpdate.map(record => ({
+    const updates = recordsToUpdate.map((record) => ({
         id: record.id,
         fields: {
             // Here, we add 1 to the current value, but you could extend this to support
@@ -126,7 +126,7 @@ function UpdateSelectedRecordsButton({tableToUpdate, fieldToUpdate, selectedReco
     return (
         <Button
             variant="primary"
-            onClick={async function() {
+            onClick={async function () {
                 // Mark the update as started.
                 setNumRecordsBeingUpdated(updates.length);
 
